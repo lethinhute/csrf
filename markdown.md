@@ -6,7 +6,7 @@ We started off by Login into account and checking the balance of the current acc
 
 https://github.com/lethinhute/csrf/blob/dd39813fdce23d13a1841293f503f3166bb55df1/csrf/login.png
 
-https://github.com/lethinhute/csrf/blob/dd39813fdce23d13a1841293f503f3166bb55df1/csrf/Checkbalance.png
+csrf/Checkbalance.png
 
 ## 1.2: Doing the transaction
 
