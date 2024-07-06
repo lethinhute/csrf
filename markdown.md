@@ -4,11 +4,15 @@
 
 We started off by Login into account and checking the balance of the current account.
 
+https://github.com/lethinhute/csrf/blob/dd39813fdce23d13a1841293f503f3166bb55df1/csrf/login.png
+
+https://github.com/lethinhute/csrf/blob/dd39813fdce23d13a1841293f503f3166bb55df1/csrf/Checkbalance.png
+
 ## 1.2: Doing the transaction
 
 We will have a look at what a normal transaction will do.
 
-
+https://github.com/lethinhute/csrf/blob/dd39813fdce23d13a1841293f503f3166bb55df1/csrf/transfer.png
 
 This leave us with a big vunerability that if the attacker have the ability to send a fake transaction request to the bank, we will be at risk of being hacked and drain out of money.
 
@@ -16,6 +20,9 @@ This leave us with a big vunerability that if the attacker have the ability to s
 
 Here's what happend if the attacker give us a random link that also steal the login information of the current user and send a fake transaction request to the web server:
 
+https://github.com/lethinhute/csrf/blob/dd39813fdce23d13a1841293f503f3166bb55df1/csrf/wap.png
+
+https://github.com/lethinhute/csrf/blob/dd39813fdce23d13a1841293f503f3166bb55df1/csrf/attackercsrf.png
 
 Here's what inside the malicious link that the attacker sent:
 
@@ -85,6 +92,8 @@ After that, we also have to make the change to login to include such csrf token 
 
 ```
 
+https://github.com/lethinhute/csrf/blob/dd39813fdce23d13a1841293f503f3166bb55df1/csrf/invalidcsrf.png
+
 The previous code is just the authentication for login with extra code for csrf token validation when the web-server is getting a POST request. This will ensure that the csrf token saved in the cookie is correct.
 
 ## 2.2: Solution 2: using the referred header method 
@@ -100,6 +109,8 @@ if 'Referer' not in request.headers:
 
 ```
 
+https://github.com/lethinhute/csrf/blob/dd39813fdce23d13a1841293f503f3166bb55df1/csrf/alicemissingre.png
+
 This will detect if the request header is hidden from the web-server or the attacker use ways to avoid including the header in the request
 
 Then from the request header, we extract the domain and check if that domain match the referred domain of our web server:
@@ -113,5 +124,7 @@ Then from the request header, we extract the domain and check if that domain mat
         return "Invalid request (Referer does not match)", 400
 
 ```
+
+https://github.com/lethinhute/csrf/blob/dd39813fdce23d13a1841293f503f3166bb55df1/csrf/alicerefernot.png
 
 This will extract and check if the header given is the same as the saved domain. Any normal request from clients will always come from the referred domain, and this will prevent csrf attack from happening because the attacker come from different domain.
