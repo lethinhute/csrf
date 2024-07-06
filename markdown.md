@@ -89,7 +89,7 @@ The previous code is just the authentication for login with extra code for csrf 
 
 ## 2.2: Solution 2: using the referred header method 
 
-This is also a very simple way to prevent basic csrf attack, this involed using a referred website domain as a POST request location, any different POST request header from malicious attacker website will not be resolved in the web server. This is also not a fool-proof method since the header itself is vunerable to attacker. Here's how to implement it in python:
+This is also a very simple way to prevent basic csrf attack, this involed using a referred website domain as a POST request location, any different POST request header from malicious attacker website will not be resolved in the web server. This is also not a fool-proof method since the header itself is vulnerable to attacker. Here's how to implement it in python:
 
 First, we need to check if the POST request contain the request source folder, any POSt request without it will not the resolved:
 
